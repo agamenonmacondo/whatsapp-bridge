@@ -1,0 +1,23 @@
+# Secrets — NUNCA commitear el archivo real
+wa_longlived_token.txt
+wa_cloud_api.json
+*.env
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyc
+.venv/
+venv/
+
+# Systemd (puede tener rutas locales)
+*.local.service
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/

@@ -1,0 +1,13 @@
+[Unit]
+Description=WhatsApp Cloud API Bridge
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 -u /home/mod/.openclaw/workspace/wa_local_receiver.py
+Restart=always
+RestartSec=5
+WorkingDirectory=/home/mod/.openclaw/workspace
+
+[Install]
+WantedBy=default.target
