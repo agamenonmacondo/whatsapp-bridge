@@ -27,13 +27,13 @@ from datetime import datetime, timezone, timedelta
 # ============================================================
 
 # WhatsApp Cloud API
-WA_ACCESS_TOKEN = "WA_ACCESS_TOKEN_PLACEHOLDER"
-WA_PHONE_NUMBER_ID = "1074934415702869"
+WA_ACCESS_TOKEN = os.environ.get("WA_ACCESS_TOKEN", "")
+WA_PHONE_NUMBER_ID = os.environ.get("WA_PHONE_NUMBER_ID", "")
 WA_API_URL = f"https://graph.facebook.com/v19.0/{WA_PHONE_NUMBER_ID}/messages"
 
 # Supabase
 SUPABASE_URL = "https://YOUR_PROJECT.supabase.co"
-SUPABASE_SERVICE_KEY = "***_REDACTED_JWT"
+SUPABASE_SERVICE_KEY = os.environ.get("SUPABASE_SERVICE_KEY", "")
 
 # Admin (Alejandro)
 ADMIN_NUMBER = "573504017710"
@@ -152,7 +152,7 @@ def normalize_phone(phone: str) -> str:
 # AUDIO TRANSCRIPTION (STT via OpenRouter/Whisper)
 # ============================================================
 
-OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY", "sk-or-v1-PLACEHOLDER")
+OPENROUTER_API_KEY_OR = os.environ.get("OPENROUTER_API_KEY_OR", "sk-or-v1-PLACEHOLDER")
 STT_MODEL = "openai/whisper-1"  # Available via OpenRouter
 
 
@@ -226,7 +226,7 @@ def transcribe_audio(media_id: str) -> str | None:
                 "https://openrouter.ai/api/v1/audio/transcriptions",
                 data=body,
                 headers={
-                    "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+                    "Authorization": f"Bearer {OPENROUTER_API_KEY_OR}",
                     "Content-Type": f"multipart/form-data; boundary={boundary}",
                 },
                 method="POST"
